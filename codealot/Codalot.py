@@ -8,7 +8,6 @@ class Codalot(object):
         for i in range(numKnights):
             self.knights.append(Knight())
         
-
     def clearKnights(self):
         del self.knights[:]
 

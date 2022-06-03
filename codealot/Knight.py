@@ -12,7 +12,8 @@ class Knight(object):
     def setXp(self, xp):
         self.__xp = xp
 
-    def incrementXp(self, xp):
+    #add inputted xp to the current xp
+    def incrementXp(self, xp): 
         self.__xp += xp
 
     def getStamina(self):
@@ -36,11 +37,11 @@ class Knight(object):
     def setInTrainingYard(self, isInTrainingYard):
         self.__isInTrainingYard = isInTrainingYard
 
-    def moveToTrainingYard(self):
+    def moveToTrainingYard(self): #toggles appropriate fields to set knight in training yard
         self.setInTrainingYard(True)
         self.setInTavern(False)
 
-    def moveToTavern(self):
+    def moveToTavern(self): #toggles appropriate fields to set knight in tavern
         self.setInTrainingYard(False)
         self.setInTavern(True)
 
