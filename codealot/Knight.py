@@ -22,7 +22,7 @@ class Knight(object):
     def setStamina(self, stamina):
         self.__stamina = stamina
 
-    def incrementStamina(self, stamina):
+    def incrementStamina(self, stamina): #use when incrementing by the hour
         self.__stamina += stamina
 
     def isInTavern(self):

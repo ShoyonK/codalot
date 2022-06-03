@@ -44,6 +44,32 @@ def TestTrainingYardStaminaZero():
     print("Passed")
 
 
+'''
+This test case generates 6 knights with three knights having 3 XP. This test checks if the bonusXP method in codalot correctly determines the bonus
+to give and gives it to the correct knights
+'''
+def TestBonusXPMethod():
+    codalot = Codalot(6)
+    knights = codalot.getKnights()
+    knights[0].setXp(3)
+    knights[1].setXp(3)
+    knights[2].setXp(3)  
+    codalot.addToBonusKnightList(knights[0])  
+    codalot.addToBonusKnightList(knights[1])  
+    codalot.addToBonusKnightList(knights[2])  
+
+    codalot.grantBonusXp()
+
+    assert(codalot.calculateEarnedXp() == 24)
+    assert(knights[0].getXp() == 8)
+    assert(knights[1].getXp() == 8)
+    assert(knights[2].getXp() == 8)
+
+
+    print("Passed")
+
+
 if __name__ == '__main__':
     TestGame()
     TestTrainingYardStaminaZero()
+    TestBonusXPMethod()
