@@ -88,7 +88,7 @@ if __name__ == "__main__":
     codalot = Codalot()
 
     knights = list()
-    for i in range(6):
+    for i in range(12): #create 12 knights
         knights.append(Knight())
 
     random = Random(1)
@@ -107,6 +107,6 @@ if __name__ == "__main__":
     for knight in knights:
         totalXp = totalXp + knight.getXp()
 
-    print "Total XP earned by all " + str(len(knights)) + " knights: " + str(totalXp)
+    print("Total XP earned by all " + str(len(knights)) + " knights: " + str(totalXp))
 
 
