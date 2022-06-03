@@ -3,8 +3,10 @@ from Knight import Knight
 class Codalot(object):
     knights = []
 
-    def __init__(self):
+    def __init__(self, numKnights):
         self.knights = list()
+        for i in range(numKnights):
+            self.knights.append(Knight())
         
 
     def clearKnights(self):
@@ -48,3 +50,9 @@ class Codalot(object):
             for knight in self.knights:
                 if knight.getXp() >= 3:
                     knight.setXp(knight.getXp() + 20)
+
+    def calculateEarnedXp(self):
+        total = 0
+        for knight in self.knights:
+            total += knight.getXp()
+        return total

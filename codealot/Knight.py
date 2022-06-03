@@ -35,3 +35,14 @@ class Knight(object):
 
     def setInTrainingYard(self, isInTrainingYard):
         self.__isInTrainingYard = isInTrainingYard
+
+    def moveToTrainingYard(self):
+        self.setInTrainingYard(True)
+        self.setInTavern(False)
+
+    def moveToTavern(self):
+        self.setInTrainingYard(False)
+        self.setInTavern(True)
+
+    def toString(self):
+        print("xp is '{xp}' and stamina is '{sta}'".format(xp=self.__xp, sta=self.__stamina))
