@@ -26,8 +26,8 @@ class Codalot(object):
 
     def process(self):
         for knight in self.knights:
+            knight.incrementXp(1 if (knight.isInTrainingYard() and knight.getStamina() > 0) else 0) #must come before incrementStamina for edge case when stamina = 1 and knight is in training yard
             knight.incrementStamina(1 if knight.isInTavern() else -1)
-            knight.incrementXp(1 if knight.isInTrainingYard() else 0)
 
     def grantBonusXp(self):
         bonusKnights = 0
