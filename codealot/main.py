@@ -30,6 +30,8 @@ if __name__ == "__main__":
     codalot.grantBonusXp()
     totalXp = codalot.calculateEarnedXp()
 
-    print("Total XP earned by all " + str(len(knights)) + " knights: " + str(totalXp))
+    print("Total XP earned by " + str(len(knights)-1) + " knights: " + str(totalXp)) #subtract 1 from length for king arthur
+    kingArthur = codalot.getKingArthur()
+    print("Xp earned by King Arthur: '{xp}'".format(xp=kingArthur.getXp()))
 
 
