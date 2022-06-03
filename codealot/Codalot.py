@@ -1,5 +1,6 @@
 from Knight import Knight
 from KingArthur import KingArthur
+from RoundTable import RoundTable
 
 class Codalot(object):
     knights = []
@@ -10,7 +11,7 @@ class Codalot(object):
         self.knights = list()
         self.kingArthur = KingArthur()
         self.knights.append(self.kingArthur)
-
+        self.roundTable = RoundTable()
         for i in range(numKnights):
             self.knights.append(Knight())
         
@@ -19,6 +20,9 @@ class Codalot(object):
 
     def getKnights(self):
         return self.knights
+
+    def getRoundTable(self):
+        return self.roundTable
 
     def addKnightToTrainingYard(self, knight):
         self.knights.append(knight)
@@ -32,7 +36,11 @@ class Codalot(object):
 
     def process(self):
         for knight in self.knights:
-            incrementXpChecker = (knight.isInTrainingYard() and knight.getStamina() > 0 and knight.getBelowZeroStaminaFlag() == False)
+            incrementXpChecker = ( knight.isInTrainingYard() and 
+                                    knight.getStamina() > 0 and 
+                                    knight.getBelowZeroStaminaFlag() == False and 
+                                    self.roundTable.visitedMinThreeTimes(knight)
+                                    )
             knight.incrementXp(1 if (incrementXpChecker) else 0) #must come before incrementStamina for edge case when stamina = 1 and knight is in training yard
             knight.incrementStamina(1 if knight.isInTavern() else -1)
 
@@ -68,4 +76,4 @@ class Codalot(object):
         del self.bonusKnights[:]
 
     def getKingArthur(self):
-        return self.kingArthur;
+        return self.kingArthur

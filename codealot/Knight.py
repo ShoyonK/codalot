@@ -1,6 +1,9 @@
+
+
 class Knight(object):
     __isInTavern = False
     __isInTrainingYard = False
+    __isAtRoundTable = False #not scalable, refactor later
     __belowZeroStamina = False
 
     def __init__(self):
@@ -37,14 +40,25 @@ class Knight(object):
 
     def setInTrainingYard(self, isInTrainingYard):
         self.__isInTrainingYard = isInTrainingYard
+    
+    def setInRoundTable(self, isInRoundTable):
+        self.__isAtRoundTable = isInRoundTable
 
     def moveToTrainingYard(self): #toggles appropriate fields to set knight in training yard
         self.setInTrainingYard(True)
         self.setInTavern(False)
+        self.setInRoundTable(False)
 
     def moveToTavern(self): #toggles appropriate fields to set knight in tavern
         self.setInTrainingYard(False)
         self.setInTavern(True)
+        self.setInRoundTable(False)
+
+    def moveToRoundTable(self, roundTable):
+        self.setInTrainingYard(False)
+        self.setInTavern(False)
+        self.setInRoundTable(True)
+        roundTable.visitRoundTable(self)
 
     def getBelowZeroStaminaFlag(self):
         return self.__belowZeroStamina
