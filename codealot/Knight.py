@@ -1,6 +1,7 @@
 class Knight(object):
     __isInTavern = False
     __isInTrainingYard = False
+    __belowZeroStamina = False
 
     def __init__(self):
         self.__xp = 0
@@ -44,6 +45,13 @@ class Knight(object):
     def moveToTavern(self): #toggles appropriate fields to set knight in tavern
         self.setInTrainingYard(False)
         self.setInTavern(True)
+
+    def getBelowZeroStaminaFlag(self):
+        return self.__belowZeroStamina
+    
+    def setBelowZeroStaminaFlag(self, belowZero):
+        self.__belowZeroStamina = belowZero
+
 
     def toString(self):
         print("xp is '{xp}' and stamina is '{sta}'".format(xp=self.__xp, sta=self.__stamina))

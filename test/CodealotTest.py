@@ -21,7 +21,7 @@ def TestGame():
     codalot.process() #make necessary changes to stamina/xp
 
     assert(codalot.calculateEarnedXp() == 0)
-    print("Passed")
+    print("Passed - 1 - TestGame")
 
 '''
 this test case generates 2 knights in the tavern and 4 knights in the training yard and generates the result for 1 hour. Only one knight has 1 stamina
@@ -41,7 +41,7 @@ def TestTrainingYardStaminaZero():
     codalot.process() #make necessary changes to stamina/xp
 
     assert(codalot.calculateEarnedXp() == 1)
-    print("Passed")
+    print("Passed - 2 - TestTrainingYardStaminaZero")
 
 
 '''
@@ -66,10 +66,27 @@ def TestBonusXPMethod():
     assert(knights[2].getXp() == 8)
 
 
-    print("Passed")
+    print("Passed - 3 - TestBonusXPMethod")
+
+
+'''
+This test case generates 1 knight that has gone below 0 stamina throughout a day and makes sure the process method is not adding xp as per the requirement. 
+The answer should be zero becaus
+the knight has its flag = True
+'''
+def TestBelowZeroStaminaFlag():
+    codalot = Codalot(1)
+    knights = codalot.getKnights()
+    knights[0].moveToTrainingYard()
+    knights[0].setBelowZeroStaminaFlag(True)
+    knights[0].setStamina(5)
+    codalot.process()
+    assert(knights[0].getXp() == 0)
+    print("Passed - 4 - TestBelowZeroStaminaFlag")
 
 
 if __name__ == '__main__':
     TestGame()
     TestTrainingYardStaminaZero()
     TestBonusXPMethod()
+    TestBelowZeroStaminaFlag()
